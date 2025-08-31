@@ -1,8 +1,11 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
+import { LitReduxMixin } from '../../utils/litReduxMixin';
+import { createEmployee } from '../../store/employee/employeeSlice';
+import { navigateTo } from '../../router';
 
 @customElement('create-employee')
-export class CreateEmployee extends LitElement {
+export class CreateEmployee extends LitReduxMixin(LitElement) {
   createRenderRoot() {
     return this;
   }
@@ -10,6 +13,12 @@ export class CreateEmployee extends LitElement {
   private handleEmployeeSubmit = (event: CustomEvent) => {
     const { values } = event.detail;
     console.log('Creating employee:', values);
+    
+    this.dispatch(createEmployee(values));
+    
+    console.log('Updated state:', this.store);
+    
+    navigateTo('/');
   };
 
   private handleEmployeeCancel = () => {

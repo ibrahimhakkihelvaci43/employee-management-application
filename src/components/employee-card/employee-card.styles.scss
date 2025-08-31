@@ -33,5 +33,7 @@
   @include element('actions') {
     display: flex;
     gap: $spacing-xs;
+    justify-content: flex-end;
+    margin-top: $spacing-md;
   }
 }

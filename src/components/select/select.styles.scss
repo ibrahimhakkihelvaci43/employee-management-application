@@ -19,7 +19,7 @@
 
   @include element('control') {
     width: 100%;
-    max-width: 100%;
+    max-width: 250px;
     box-sizing: border-box;
     padding: $spacing-sm $spacing-md;
     border: 2px solid $color-gray-300;
@@ -67,6 +67,7 @@
     left: 0;
     right: 0;
     min-width: 80px;
+    max-width: 250px;
     background-color: $color-white;
     border: 2px solid $color-primary;
     border-top: none;

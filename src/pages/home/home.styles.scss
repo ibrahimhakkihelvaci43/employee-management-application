@@ -1,8 +1,57 @@
 .home-page {
-  h1 {
-    color: $color-text-primary;
-    font-size: $font-size-2xl;
-    font-weight: $font-weight-bold;
-    margin: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @include element('header') {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
+
+  @include element('view-toggle') {
+    display: flex;
+    gap: 8px;
+  }
+
+  @include element('actions') {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include element('table') {
+    margin-top: 36px;
+    background: white;
+  }
+
+  @include element('cards') {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  @include element('empty') {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    margin-top: 20px;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  
+   
+  @include element('title') {
+    font-size: 24px;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin-bottom: 8px;
+  }
+   
 }

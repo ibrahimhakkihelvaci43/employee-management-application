@@ -46,6 +46,40 @@
     padding: $spacing-xs;
   }
 
+  @include modifier('edit') {
+    background-color: #6366f1;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: #5855eb;
+    }
+
+    .button__icon {
+      color: white;
+      margin-right: 0;
+    }
+  }
+
+  @include modifier('delete') {
+    background-color: #ff6b35;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: #e55a2b;
+    }
+
+    .button__icon {
+      color: white;
+      margin-right: 0;
+    }
+  }
+
 
   @include modifier('sm') {
     padding: $spacing-xs $spacing-sm;
@@ -70,8 +104,8 @@
     margin-right: $spacing-xs;
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: 24px;
+      height: 24px;
     }
   }
 }

@@ -1,6 +1,9 @@
 export { chevronDownIcon } from './chevron-down';
 export { chevronLeftIcon } from './chevron-left';
 export { chevronRightIcon } from './chevron-right';
-export { plusIcon } from './plus';
 export { editIcon } from './edit';
+export { gridIcon } from './grid';
+export { listIcon } from './list';
+export { plusIcon } from './plus';
+export { trashIcon } from './trash';
 export { usersIcon } from './users';

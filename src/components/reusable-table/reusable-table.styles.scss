@@ -4,6 +4,7 @@
   border-radius: $border-radius-sm;
   box-shadow: $shadow-sm;
   overflow: hidden;
+  padding: 40px;
 
   @include element('container') {
     overflow-x: auto;
@@ -22,7 +23,7 @@
   @include element('header') {
     padding: $spacing-sm $spacing-md;
     text-align: left;
-    font-weight: $font-weight-semibold;
+    font-weight: 500;
     color: $color-primary;
     border-bottom: 1px solid $color-gray-200;
 
@@ -44,6 +45,7 @@
   @include element('row') {
     border-bottom: 1px solid $color-gray-200;
     transition: background-color 0.2s ease;
+    min-height: 80px;
 
     &:hover {
       background-color: $color-gray-50;
@@ -63,9 +65,10 @@
   }
 
   @include element('cell') {
-    padding: $spacing-sm $spacing-md;
+    padding: $spacing-lg $spacing-md;
     color: $color-text-primary;
     vertical-align: middle;
+    height: 80px;
 
     @include modifier('checkbox') {
       width: 40px;
@@ -89,6 +92,10 @@
     gap: $spacing-xs;
     justify-content: center;
     align-items: center;
+
+    svg {
+      color: #ff6b35 !important;
+    }
   }
 }
 

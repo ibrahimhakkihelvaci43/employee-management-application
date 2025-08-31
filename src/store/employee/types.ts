@@ -14,4 +14,7 @@ export interface EmployeeState {
   employees: Employee[];
   loading: boolean;
   error: string | null;
+  currentPage: number;
+  pageSize: number;
+  totalCount: number;
 }

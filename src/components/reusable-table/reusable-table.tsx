@@ -96,7 +96,7 @@ export class ReusableTableComponent extends LitElement {
           ${this.actions.map(action => html`
             <button-component
               variant="${action.variant || 'secondary'}"
-              text="${action.label}"
+              .icon="${action.label}"
               size="sm"
               @click="${() => action.onClick(item)}"
             ></button-component>

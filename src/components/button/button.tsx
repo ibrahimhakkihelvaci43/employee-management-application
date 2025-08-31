@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-type ButtonVariant = 'primary' | 'secondary' | 'link' | 'icon';
+type ButtonVariant = 'primary' | 'secondary' | 'link' | 'icon' | 'edit' | 'delete';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 @customElement('button-component')
@@ -11,6 +11,7 @@ export class ButtonComponent extends LitElement {
   @property() text: string = '';
   @property() icon?: string;
   @property() type: string = 'button';
+  @property() iconColor?: string;
 
   onClick?: () => void;
 
@@ -43,7 +44,7 @@ export class ButtonComponent extends LitElement {
         @click="${this.handleClick}"
       > 
         ${this.icon ? html`
-          <span class="button__icon">
+          <span class="button__icon" style="${this.iconColor ? `color: ${this.iconColor} !important;` : ''}">
             ${this.icon}
           </span>
         ` : ''}
