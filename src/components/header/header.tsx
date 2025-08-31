@@ -3,9 +3,12 @@ import { customElement } from 'lit/decorators.js';
 import { usersIcon } from '../../assets/icons';
 import { plusIcon } from '../../assets/icons';
 import { navigateTo } from '../../router';
+import { LitReduxMixin } from '../../utils/litReduxMixin';
+import { setLanguage } from '../../store/employee/employeeSlice';
+import { getTranslation } from '../../utils/translations';
 
 @customElement('header-component')
-export class HeaderComponent extends LitElement {
+export class HeaderComponent extends LitReduxMixin(LitElement) {
   createRenderRoot() {
     return this;
   }
@@ -18,12 +21,13 @@ export class HeaderComponent extends LitElement {
     navigateTo('/create-employee');
   }
 
-  private handleLanguageChange(event: Event) {
-    const select = event.target as HTMLSelectElement;
-    console.log('handleLanguageChange', select.value);
+  private handleLanguageChange = (event: CustomEvent) => {
+    const { value } = event.detail;
+    this.dispatch(setLanguage(value as 'tr' | 'en'));
   }
 
   render() {
+    const { language } = this.store.employee;
     const languageOptions = [
       { value: 'tr', label: '🇹🇷' },
       { value: 'en', label: '🇺🇸' }
@@ -38,22 +42,23 @@ export class HeaderComponent extends LitElement {
         <div class="header__actions">
           <button-component
             variant="link"
-            text="Employees"
+            text="${getTranslation('employees')}"
             .icon="${usersIcon}"
             @click="${this.handleEmployeesClick}"
           ></button-component>
 
           <button-component
             variant="link"
-            text="Add New"
+            text="${getTranslation('addNew')}"
             .icon="${plusIcon}"
             @click="${this.handleAddNewClick}"
           ></button-component>
 
           <select-component
             .options="${languageOptions}"
+            .value="${language}"
             placeholder="🇹🇷"
-            @change="${this.handleLanguageChange}"
+            @select-change="${this.handleLanguageChange}"
           ></select-component>
         </div>
       </header>

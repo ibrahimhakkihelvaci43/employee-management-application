@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { LitReduxMixin } from '../../utils/litReduxMixin';
+import { getTranslation } from '../../utils/translations';
 import '../employee-card/employee-card';
 import '../custom-pagination/custom-pagination';
 
@@ -17,7 +19,7 @@ interface EmployeeListData {
 }
 
 @customElement('employee-list')
-export class EmployeeListComponent extends LitElement {
+export class EmployeeListComponent extends LitReduxMixin(LitElement) {
   @property({ type: Object }) rowData: EmployeeListData = { items: [] };
   @property({ type: Array }) actions: EmployeeListAction[] = [];
   @property({ type: Function }) handleChangePage?: (pageNumber: number) => void;
@@ -30,14 +32,14 @@ export class EmployeeListComponent extends LitElement {
     return html`
       <employee-card
         .items="${[
-          { label: 'Ad', value: employee.firstName },
-          { label: 'Soyad', value: employee.lastName },
-          { label: 'Email', value: employee.email },
-          { label: 'Telefon', value: employee.phone },
-          { label: 'Departman', value: employee.department },
-          { label: 'Pozisyon', value: employee.position },
-          { label: 'İşe Başlama', value: employee.dateOfEmployment },
-          { label: 'Doğum Tarihi', value: employee.dateOfBirth }
+          { label: getTranslation('firstName'), value: employee.firstName },
+          { label: getTranslation('lastName'), value: employee.lastName },
+          { label: getTranslation('email'), value: employee.email },
+          { label: getTranslation('phone'), value: employee.phone },
+          { label: getTranslation('department'), value: employee.department },
+          { label: getTranslation('position'), value: employee.position },
+          { label: getTranslation('dateOfEmployment'), value: employee.dateOfEmployment },
+          { label: getTranslation('dateOfBirth'), value: employee.dateOfBirth }
         ]}"
         .actions="${this.actions.map(action => ({
           label: action.label,

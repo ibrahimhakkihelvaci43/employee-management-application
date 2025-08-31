@@ -10,6 +10,7 @@ const initialState: EmployeeState = {
   pageSize: 6,
   totalCount: mockEmployees.length,
   viewMode: 'table',
+  language: 'tr',
 };
 
 const employeeSlice = createSlice({
@@ -63,6 +64,10 @@ const employeeSlice = createSlice({
     setViewMode: (state, action: PayloadAction<'table' | 'list'>) => {
       state.viewMode = action.payload;
     },
+    
+    setLanguage: (state, action: PayloadAction<'tr' | 'en'>) => {
+      state.language = action.payload;
+    },
   },
 });
 
@@ -75,6 +80,7 @@ export const {
   setError,
   deleteMultipleEmployees,
   setViewMode,
+  setLanguage,
 } = employeeSlice.actions;
 
 export default employeeSlice.reducer;

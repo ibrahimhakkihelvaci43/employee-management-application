@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { LitReduxMixin } from '../../utils/litReduxMixin';
 import { editEmployee } from '../../store/employee/employeeSlice';
 import { navigateTo } from '../../router';
+import { getTranslation } from '../../utils/translations';
 import './edit-employee.styles.scss';
 
 @customElement('edit-employee')
@@ -41,7 +42,7 @@ export class EditEmployee extends LitReduxMixin(LitElement) {
   render() {
     return html`
       <div class="edit-employee">
-        <page-title text="Edit Employee"></page-title>
+        <page-title text="${getTranslation('editEmployee')}"></page-title>
         
         <div class="edit-employee__form">
           <employee-form

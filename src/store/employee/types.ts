@@ -18,4 +18,5 @@ export interface EmployeeState {
   pageSize: number;
   totalCount: number;
   viewMode: 'table' | 'list';
+  language: 'tr' | 'en';
 }

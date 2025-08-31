@@ -1,10 +1,12 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { Employee } from '../../store/employee/types';
-import { employeeFormValidationSchema, positionOptions } from './employee-form.validations';
+import { employeeFormValidationSchema } from './employee-form.validations';
+import { LitReduxMixin } from '../../utils/litReduxMixin';
+import { getTranslation } from '../../utils/translations';
 
 @customElement('employee-form')
-export class EmployeeForm extends LitElement {
+export class EmployeeForm extends LitReduxMixin(LitElement) {
   @property({ type: Object }) employee?: Employee;
 
   createRenderRoot() {
@@ -39,6 +41,14 @@ export class EmployeeForm extends LitElement {
     }
   };
 
+  private getTranslatedPositionOptions() {
+    return [
+      { value: 'junior', label: getTranslation('junior') },
+      { value: 'mid', label: getTranslation('midLevel') },
+      { value: 'senior', label: getTranslation('senior') }
+    ];
+  }
+
   render() {
     const initialValues = {
       firstName: this.employee?.firstName || '',
@@ -60,25 +70,25 @@ export class EmployeeForm extends LitElement {
         >
           <div class="employee-form__grid">
             <div class="employee-form__field">
-              <label>First Name</label>
+              <label>${getTranslation('firstName')}</label>
               <input-component
                 name="firstName"
-                placeholder="Enter first name"
+                placeholder="${getTranslation('enterFirstName')}"
                 required
               ></input-component>
             </div>
 
             <div class="employee-form__field">
-              <label>Last Name</label>
+              <label>${getTranslation('lastName')}</label>
               <input-component
                 name="lastName"
-                placeholder="Enter last name"
+                placeholder="${getTranslation('enterLastName')}"
                 required
               ></input-component>
             </div>
 
             <div class="employee-form__field">
-              <label>Date of Employment</label>
+              <label>${getTranslation('dateOfEmployment')}</label>
               <input-component
                 name="dateOfEmployment"
                 type="date"
@@ -87,7 +97,7 @@ export class EmployeeForm extends LitElement {
             </div>
 
             <div class="employee-form__field">
-              <label>Date of Birth</label>
+              <label>${getTranslation('dateOfBirth')}</label>
               <input-component
                 name="dateOfBirth"
                 type="date"
@@ -96,39 +106,39 @@ export class EmployeeForm extends LitElement {
             </div>
 
             <div class="employee-form__field">
-              <label>Phone</label>
+              <label>${getTranslation('phone')}</label>
               <input-component
                 name="phone"
-                placeholder="Enter phone number"
+                placeholder="${getTranslation('enterPhone')}"
                 required
               ></input-component>
             </div>
 
             <div class="employee-form__field">
-              <label>Email</label>
+              <label>${getTranslation('email')}</label>
               <input-component
                 name="email"
                 type="email"
-                placeholder="Enter email address"
+                placeholder="${getTranslation('enterEmail')}"
                 required
               ></input-component>
             </div>
 
             <div class="employee-form__field">
-              <label>Department</label>
+              <label>${getTranslation('department')}</label>
               <input-component
                 name="department"
-                placeholder="Enter department"
+                placeholder="${getTranslation('enterDepartment')}"
                 required
               ></input-component>
             </div>
 
             <div class="employee-form__field">
-              <label>Position</label>
+              <label>${getTranslation('position')}</label>
               <select-component
                 name="position"
-                .options="${positionOptions}"
-                placeholder="Select position level"
+                .options="${this.getTranslatedPositionOptions()}"
+                placeholder="${getTranslation('selectPosition')}"
                 required
               ></select-component>
             </div>
@@ -138,14 +148,14 @@ export class EmployeeForm extends LitElement {
             <button-component
               type="submit"
               variant="primary"
-              text="${this.mode === 'create' ? 'Save' : 'Save'}"
+              text="${getTranslation('save')}"
               @click="${this.handleFormSubmit}"
             ></button-component>
             
             <button-component
               type="button"
               variant="secondary"
-              text="Cancel"
+              text="${getTranslation('cancel')}"
               @click="${this.handleCancel}"
             ></button-component>
           </div>
