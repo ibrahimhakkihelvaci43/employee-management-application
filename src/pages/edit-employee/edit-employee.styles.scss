@@ -1,0 +1,12 @@
+.edit-employee {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @include element('form') {
+    margin-top: 36px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}

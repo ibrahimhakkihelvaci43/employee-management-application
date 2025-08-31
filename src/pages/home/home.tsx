@@ -1,8 +1,10 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { LitReduxMixin } from '../../utils/litReduxMixin';
-import { setCurrentPage, deleteEmployee, deleteMultipleEmployees } from '../../store/employee/employeeSlice';
+import { setCurrentPage, deleteEmployee, deleteMultipleEmployees, setViewMode } from '../../store/employee/employeeSlice';
 import { editIcon, trashIcon, gridIcon, listIcon } from '../../assets/icons';
+import { navigateTo } from '../../router';
+import '../../components/employee-list/employee-list';
 
 @customElement('home-page')
 export class HomePage extends LitReduxMixin(LitElement) {
@@ -15,11 +17,10 @@ export class HomePage extends LitReduxMixin(LitElement) {
   }
 
   private handleEditEmployee = (employee: any) => {
-    console.log('Edit employee:', employee);
+    navigateTo(`/edit-employee/${employee.id}`);
   }
 
   private selectedItems: any[] = [];
-  private viewMode: 'table' | 'list' = 'table';
 
   private handleDeleteEmployee = (employee: any) => {
     if (this.selectedItems.length > 1) {
@@ -40,12 +41,11 @@ export class HomePage extends LitReduxMixin(LitElement) {
   }
 
   private handleViewModeChange = (mode: 'table' | 'list') => {
-    this.viewMode = mode;
-    this.requestUpdate();
+    this.dispatch(setViewMode(mode));
   }
 
   render() {
-    const { employees, currentPage, pageSize, totalCount } = this.store.employee;
+    const { employees, currentPage, pageSize, totalCount, viewMode } = this.store.employee;
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedEmployees = employees.slice(startIndex, endIndex);
@@ -87,7 +87,7 @@ export class HomePage extends LitReduxMixin(LitElement) {
               size="md"
               iconColor="#ff6b35"
               @click="${() => this.handleViewModeChange('table')}"
-              class="${this.viewMode === 'table' ? 'active' : ''}"
+              class="${viewMode === 'table' ? 'active' : ''}"
             ></button-component>
             
             <button-component
@@ -96,7 +96,7 @@ export class HomePage extends LitReduxMixin(LitElement) {
               size="md"
               iconColor="#ff6b35"
               @click="${() => this.handleViewModeChange('list')}"
-              class="${this.viewMode === 'list' ? 'active' : ''}"
+              class="${viewMode === 'list' ? 'active' : ''}"
             ></button-component>
           </div>
         </div>
@@ -107,7 +107,7 @@ ${employees.length === 0 ? html`
               <div class="empty-state__title">Çalışan bulunmuyor</div>
             </div>
           </div>
-        ` : this.viewMode === 'table' ? html`
+        ` : viewMode === 'table' ? html`
           <div class="home-page__table">
             <reusable-table
               .columns="${columns}"
@@ -123,35 +123,27 @@ ${employees.length === 0 ? html`
             ></reusable-table>
           </div>
         ` : html`
-          <div class="home-page__cards">
-            ${paginatedEmployees.map(employee => html`
-              <employee-card
-                .items="${[
-                  { label: 'Ad', value: employee.firstName },
-                  { label: 'Soyad', value: employee.lastName },
-                  { label: 'Email', value: employee.email },
-                  { label: 'Telefon', value: employee.phone },
-                  { label: 'Departman', value: employee.department },
-                  { label: 'Pozisyon', value: employee.position },
-                  { label: 'İşe Başlama', value: employee.dateOfEmployment },
-                  { label: 'Doğum Tarihi', value: employee.dateOfBirth }
-                ]}"
-                .actions="${[
-                  {
-                    label: editIcon,
-                    variant: 'edit',
-                    onClick: () => this.handleEditEmployee(employee)
-                  },
-                  {
-                    label: trashIcon,
-                    variant: 'delete',
-                    onClick: () => this.handleDeleteEmployee(employee)
-                  }
-                ]}"
-                .employeeId="${employee.id}"
-              ></employee-card>
-            `)}
-          </div>
+          <employee-list
+            .rowData="${{
+              items: paginatedEmployees,
+              pageNumber: currentPage,
+              totalPages: totalPages,
+              totalCount: totalCount
+            }}"
+            .actions="${[
+              {
+                label: editIcon,
+                variant: 'edit',
+                onClick: this.handleEditEmployee
+              },
+              {
+                label: trashIcon,
+                variant: 'delete',
+                onClick: this.handleDeleteEmployee
+              }
+            ]}"
+            .handleChangePage="${this.handlePageChange}"
+          ></employee-list>
         `}
       </div>
     `;

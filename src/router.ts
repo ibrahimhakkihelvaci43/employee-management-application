@@ -2,6 +2,7 @@ import { Router } from '@vaadin/router';
 
 import './pages/home';
 import './pages/create-employee';
+import './pages/edit-employee';
 
 let router: Router;
 
@@ -18,6 +19,10 @@ function initializeRouter() {
       {
         path: '/create-employee',
         component: 'create-employee'
+      },
+      {
+        path: '/edit-employee/:id',
+        component: 'edit-employee'
       },
       {
         path: '(.*)',

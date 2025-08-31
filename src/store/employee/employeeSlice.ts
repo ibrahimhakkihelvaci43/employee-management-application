@@ -7,8 +7,9 @@ const initialState: EmployeeState = {
   loading: false,
   error: null,
   currentPage: 1,
-  pageSize: 5,
+  pageSize: 6,
   totalCount: mockEmployees.length,
+  viewMode: 'table',
 };
 
 const employeeSlice = createSlice({
@@ -58,6 +59,10 @@ const employeeSlice = createSlice({
       );
       state.totalCount = state.employees.length;
     },
+    
+    setViewMode: (state, action: PayloadAction<'table' | 'list'>) => {
+      state.viewMode = action.payload;
+    },
   },
 });
 
@@ -69,6 +74,7 @@ export const {
   setCurrentPage,
   setError,
   deleteMultipleEmployees,
+  setViewMode,
 } = employeeSlice.actions;
 
 export default employeeSlice.reducer;

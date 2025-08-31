@@ -44,5 +44,27 @@ export const mockEmployees: Employee[] = [
     email: 'fatma.ozturk@company.com',
     department: 'Muhasebe',
     position: 'senior'
+  },
+  {
+    id: '5',
+    firstName: 'Can',
+    lastName: 'Arslan',
+    dateOfEmployment: '2023-11-05',
+    dateOfBirth: '1993-07-18',
+    phone: '5552222222',
+    email: 'can.arslan@company.com',
+    department: 'Satış',
+    position: 'mid'
+  },
+  {
+    id: '6',
+    firstName: 'Zeynep',
+    lastName: 'Çelik',
+    dateOfEmployment: '2024-02-14',
+    dateOfBirth: '1996-11-30',
+    phone: '5553333333',
+    email: 'zeynep.celik@company.com',
+    department: 'Tasarım',
+    position: 'junior'
   }
 ];

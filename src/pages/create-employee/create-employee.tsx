@@ -23,6 +23,7 @@ export class CreateEmployee extends LitReduxMixin(LitElement) {
 
   private handleEmployeeCancel = () => {
     console.log('Create employee cancelled');
+    navigateTo('/');
   };
 
   render() {

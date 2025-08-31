@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { chevronLeftIcon, chevronRightIcon } from '../../assets/icons';
+import '../custom-pagination/custom-pagination';
 
 interface TableColumn {
   label: string;
@@ -106,71 +106,6 @@ export class ReusableTableComponent extends LitElement {
     `;
   }
 
-  private handlePaginationPrevious() {
-    const currentPage = this.rowData.pageNumber || 1;
-    if (currentPage > 1 && this.handleChangePage) {
-      this.handleChangePage(currentPage - 1);
-    }
-  }
-
-  private handlePaginationNext() {
-    const currentPage = this.rowData.pageNumber || 1;
-    const totalPages = this.rowData.totalPages || 0;
-    if (currentPage < totalPages && this.handleChangePage) {
-      this.handleChangePage(currentPage + 1);
-    }
-  }
-
-  private handlePaginationPageClick(page: number) {
-    if (this.handleChangePage) {
-      this.handleChangePage(page);
-    }
-  }
-
-  private renderPaginationPageNumbers() {
-    const currentPage = this.rowData.pageNumber || 1;
-    const totalPages = this.rowData.totalPages || 0;
-    const pages = [];
-    
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(html`
-        <button
-          class="pagination__page ${i === currentPage ? 'pagination__page--active' : ''}"
-          @click="${() => this.handlePaginationPageClick(i)}"
-        >
-          ${i}
-        </button>
-      `);
-    }
-    return pages;
-  }
-
-  private renderPagination() {
-    const currentPage = this.rowData.pageNumber || 1;
-    const totalPages = this.rowData.totalPages;
-
-    return html`
-      <div class="pagination">
-        <button
-          class="pagination__button"
-          ?disabled="${currentPage === 1}"
-          @click="${this.handlePaginationPrevious}"
-        >
-          ${chevronLeftIcon}
-        </button>
-
-        ${this.renderPaginationPageNumbers()}
-
-        <button
-          class="pagination__button"
-          ?disabled="${currentPage === totalPages}"
-          @click="${this.handlePaginationNext}"
-        >
-          ${chevronRightIcon}
-        </button>
-      </div>
-    `;
-  }
 
   render() {
     return html`
@@ -224,7 +159,11 @@ export class ReusableTableComponent extends LitElement {
           </table>
         </div>
         
-        ${this.renderPagination()}
+        <custom-pagination
+          .currentPage="${this.rowData.pageNumber || 1}"
+          .totalPages="${this.rowData.totalPages || 0}"
+          .onPageChange="${this.handleChangePage}"
+        ></custom-pagination>
       </div>
     `;
   }

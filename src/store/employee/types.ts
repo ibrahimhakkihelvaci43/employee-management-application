@@ -17,4 +17,5 @@ export interface EmployeeState {
   currentPage: number;
   pageSize: number;
   totalCount: number;
+  viewMode: 'table' | 'list';
 }
