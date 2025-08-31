@@ -32,6 +32,16 @@ export class HomePage extends LitElement {
             .options="${departmentOptions}"
             required
           ></select-component>
+
+           <button-component 
+                variant="primary" 
+                text="primary"
+              </button-component>
+              
+              <button-component 
+                variant="secondary" 
+                text="secondary">
+              </button-component>
         </div>
       </div>
     `;

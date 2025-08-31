@@ -1,5 +1,6 @@
 .home-page {
   @include flex-center;
+  @include flex-column;
   min-height: 100vh;
 
   @include element('greeting') {
@@ -12,6 +13,6 @@
     @include respond-to(md) {
       font-size: 5rem;
     }
-  }
+  }  
 }
  

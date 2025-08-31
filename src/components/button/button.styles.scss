@@ -1,0 +1,76 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid transparent;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  outline: none;
+
+  @include modifier('primary') {
+    background-color: $color-primary;
+    color: $color-white;
+    border-color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
+    }
+  }
+
+  @include modifier('secondary') {
+    background-color: $color-white;
+    color: $color-primary;
+    border-color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary-light;
+    }
+
+  }
+
+  @include modifier('link') {
+    color: $color-primary;
+    padding: $spacing-xs;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+
+  @include modifier('icon') {
+    color: $color-gray-600;
+    padding: $spacing-xs;
+  }
+
+
+  @include modifier('sm') {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  @include modifier('lg') {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-lg;
+  }
+
+  @include modifier('icon-only') {
+    padding: $spacing-sm;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  @include element('icon') {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
