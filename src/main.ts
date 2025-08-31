@@ -5,3 +5,4 @@ import './components/button';
 import './components/select';
 import './components/reusable-table';
 import './components/employee-card';
+import './components/header';

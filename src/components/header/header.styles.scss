@@ -1,0 +1,49 @@
+.header {
+  background-color: $color-white;
+  padding: $spacing-md $spacing-lg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  @include element('logo') {
+    display: flex;
+    align-items: center;
+  }
+
+  @include element('actions') {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    button-component {
+      color: $color-primary;
+
+      .button__icon svg {
+        color: $color-primary;
+      }
+    }
+
+    select-component {
+      margin-bottom: 8px;
+      
+      .select__control {
+        border: none;
+        background: transparent;
+        padding: 0;
+        min-height: auto;
+        min-width: 50px;
+      }
+
+      .select__arrow {
+        display: none;
+      }
+
+      .select__dropdown {
+        min-width: 80px;
+      }
+    }
+  }
+}

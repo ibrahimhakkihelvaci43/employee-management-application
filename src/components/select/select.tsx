@@ -97,7 +97,7 @@ export class SelectComponent extends LitElement {
             @click="${this.toggleDropdown}"
           >
             <span class="select__value">
-              ${this.selectedOption?.label || this.placeholder}
+              ${this.selectedOption ? html`${this.selectedOption.label}` : html`${this.placeholder}`}
             </span>
             <span class="select__arrow ${this.state.isOpen ? 'select__arrow--up' : ''}">
               ${chevronDownIcon}
@@ -111,7 +111,7 @@ export class SelectComponent extends LitElement {
                   class="select__option ${option.value === this.value ? 'select__option--selected' : ''}"
                   @click="${() => this.selectOption(option)}"
                 >
-                  ${option.label}
+                  ${html`${option.label}`}
                 </div>
               `)}
             </div>

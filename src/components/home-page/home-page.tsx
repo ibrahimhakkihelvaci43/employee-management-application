@@ -40,6 +40,7 @@ export class HomePage extends LitElement {
 
     return html`
       <div class="home-page">
+        <header-component></header-component>
         <h1 class="home-page__greeting">Selam! </h1>
         
         <div class="home-page__form">
