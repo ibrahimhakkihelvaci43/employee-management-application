@@ -11,6 +11,14 @@ export class HomePage extends LitElement {
     return html`
       <div class="home-page">
         <h1 class="home-page__greeting">Selam! </h1>
+        
+          
+          <input-component 
+            label="Soyad" 
+            placeholder="Soyadınızı girin"
+            required
+          ></input-component>
+          
       </div>
     `;
   }
