@@ -1,6 +1,7 @@
 import { Router } from '@vaadin/router';
 
 import './pages/home';
+import './pages/create-employee';
 
 let router: Router;
 
@@ -13,6 +14,10 @@ function initializeRouter() {
       {
         path: '/',
         component: 'home-page'
+      },
+      {
+        path: '/create-employee',
+        component: 'create-employee'
       },
       {
         path: '(.*)',

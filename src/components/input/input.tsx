@@ -12,7 +12,9 @@ export class InputComponent extends LitElement {
   @property() placeholder: string = '';
   @property({ type: Boolean }) required: boolean = false;
   @property({ type: Boolean }) disabled: boolean = false;
-  @property() error: string = '';
+  @property({ type: String }) error: string = '';
+  @property() name: string = '';
+  @property() type: string = 'text';
 
   onChange?: (value: string) => void;
 
@@ -34,6 +36,13 @@ export class InputComponent extends LitElement {
     
     this.dispatchEvent(new CustomEvent('input-change', {
       detail: { value: this.value },
+      bubbles: true,
+      composed: true
+    }));
+  }
+
+  private handleBlur = () => {
+    this.dispatchEvent(new CustomEvent('blur', {
       bubbles: true,
       composed: true
     }));
@@ -65,9 +74,12 @@ export class InputComponent extends LitElement {
             class="${this.inputClasses}"
             .value="${this.value}"
             placeholder="${this.placeholder}"
+            name="${this.name}"
+            type="${this.type}"
             ?required="${this.required}"
             ?disabled="${this.disabled}"
             @input="${this.handleInput}"
+            @blur="${this.handleBlur}"
           />
         </div>
 

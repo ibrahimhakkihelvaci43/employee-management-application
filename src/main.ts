@@ -6,4 +6,8 @@ import './components/reusable-table';
 import './components/employee-card';
 import './components/header';
 import './components/app-shell';
+import './components/employee-form';
+import './components/validation-form';
+import './components/page-title';
+import './utils/storeProvider';
 import './router';

@@ -1,0 +1,76 @@
+.employee-form {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+
+
+  @include element('grid') {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: $spacing-2xl;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @include element('field') {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    label {
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+      font-size: $font-size-sm;
+    }
+
+    input-component,
+    select-component {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @include element('error') {
+    color: $color-error;
+    font-size: $font-size-xs;
+    min-height: 1rem;
+    display: block;
+  }
+
+  @include element('actions') {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: center;
+    padding-top: $spacing-lg;
+
+    button-component {
+      width: 300px;
+    }
+
+    @include respond-to(sm) {
+      flex-direction: column;
+      align-items: center;
+      
+      button-component {
+       button{
+        width: 250px;
+       }
+      }
+    }
+
+    @include respond-to(md) {
+      flex-direction: row;
+      
+      button-component {
+        width: 300px;
+      }
+    }
+  }
+}

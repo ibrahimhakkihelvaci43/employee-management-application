@@ -10,6 +10,7 @@ export class ButtonComponent extends LitElement {
   @property() size: ButtonSize = 'md';
   @property() text: string = '';
   @property() icon?: string;
+  @property() type: string = 'button';
 
   onClick?: () => void;
 
@@ -38,6 +39,7 @@ export class ButtonComponent extends LitElement {
     return html`
       <button
         class="${this.buttonClasses}"
+        type="${this.type}"
         @click="${this.handleClick}"
       > 
         ${this.icon ? html`
