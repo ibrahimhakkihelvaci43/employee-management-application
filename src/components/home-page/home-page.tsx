@@ -12,6 +12,9 @@ export class HomePage extends LitElement {
       { value: 'hr', label: 'İnsan Kaynakları' },
       { value: 'finance', label: 'Muhasebe' },
     ];
+ 
+   
+   
 
     return html`
       <div class="home-page">
@@ -23,8 +26,6 @@ export class HomePage extends LitElement {
             placeholder="Adınızı girin"
             required
           ></input-component>
-          
-        
 
           <select-component
             label="Departman"
@@ -33,16 +34,18 @@ export class HomePage extends LitElement {
             required
           ></select-component>
 
-           <button-component 
-                variant="primary" 
-                text="primary"
-              </button-component>
+          <button-component 
+            variant="primary" 
+            text="Kaydet">
+          </button-component>
               
-              <button-component 
-                variant="secondary" 
-                text="secondary">
-              </button-component>
+          <button-component 
+            variant="secondary" 
+            text="İptal">
+          </button-component>
         </div>
+
+        
       </div>
     `;
   }
