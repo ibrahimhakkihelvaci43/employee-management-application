@@ -11,10 +11,12 @@ export class HeaderComponent extends LitElement {
 
   private handleEmployeesClick() {
     console.log('handleEmployeesClick');
+
   }
 
   private handleAddNewClick() {
     console.log('handleAddNewClick');
+
   }
 
   private handleLanguageChange(event: Event) {
