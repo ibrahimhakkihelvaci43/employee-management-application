@@ -1,0 +1,37 @@
+.employee-card {
+  background-color: $color-white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @include element('items') {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+  }
+
+  @include element('item') {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  @include element('label') {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+  }
+
+  @include element('value') {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+
+  @include element('actions') {
+    display: flex;
+    gap: $spacing-xs;
+  }
+}
