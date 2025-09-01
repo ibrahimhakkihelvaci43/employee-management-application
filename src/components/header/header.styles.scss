@@ -13,6 +13,12 @@
     align-items: center;
   }
 
+  @include element('logo-image') {
+    height: 40px;
+    width: auto;
+    max-width: 120px;
+  }
+
   @include element('actions') {
     display: flex;
     align-items: center;
@@ -43,6 +49,10 @@
 
       .select__dropdown {
         min-width: 80px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        width: max-content;
       }
     }
   }

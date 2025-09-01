@@ -26,5 +26,7 @@
   "senior": "Senior",
   "deleteConfirmSingle": "adlı çalışanı silmek istediğinizden emin misiniz?",
   "deleteConfirmMultiple": "Seçilen {count} çalışanı silmek istediğinizden emin misiniz?",
-  "noEmployeesFound": "Çalışan bulunmuyor"
+  "noEmployeesFound": "Çalışan bulunmuyor",
+  "saveConfirm": "Çalışan bilgileri kaydedilecektir. Devam etmek istiyor musunuz?",
+  "updateConfirm": "Çalışan bilgileri güncellenecektir. Devam etmek istiyor musunuz?"
 }

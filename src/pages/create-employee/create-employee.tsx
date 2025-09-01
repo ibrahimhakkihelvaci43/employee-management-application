@@ -13,13 +13,11 @@ export class CreateEmployee extends LitReduxMixin(LitElement) {
 
   private handleEmployeeSubmit = (event: CustomEvent) => {
     const { values } = event.detail;
-    console.log('Creating employee:', values);
     
-    this.dispatch(createEmployee(values));
-    
-    console.log('Updated state:', this.store);
-    
-    navigateTo('/');
+    if (confirm(getTranslation('saveConfirm'))) {
+      this.dispatch(createEmployee(values));
+      navigateTo('/');
+    }
   };
 
   private handleEmployeeCancel = () => {

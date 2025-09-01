@@ -26,5 +26,7 @@
   "senior": "Senior",
   "deleteConfirmSingle": "Are you sure you want to delete the employee named",
   "deleteConfirmMultiple": "Are you sure you want to delete the selected {count} employees?",
-  "noEmployeesFound": "No employees found"
+  "noEmployeesFound": "No employees found",
+  "saveConfirm": "Employee information will be saved. Do you want to continue?",
+  "updateConfirm": "Employee information will be updated. Do you want to continue?"
 }

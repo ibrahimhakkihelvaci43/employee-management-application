@@ -36,7 +36,7 @@ export class HeaderComponent extends LitReduxMixin(LitElement) {
     return html`
       <header class="header">
         <div class="header__logo">
-          app log
+          <img src="/src/assets/images/ing-logo.png" class="header__logo-image" />
         </div>
 
         <div class="header__actions">

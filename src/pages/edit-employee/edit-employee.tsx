@@ -28,11 +28,14 @@ export class EditEmployee extends LitReduxMixin(LitElement) {
 
   private handleEmployeeSubmit = (event: CustomEvent) => {
     const { values } = event.detail;    
-    this.dispatch(editEmployee({
-      ...values,
-      id: this.employeeId
-    }));    
-    navigateTo('/');
+    
+    if (confirm(getTranslation('updateConfirm'))) {
+      this.dispatch(editEmployee({
+        ...values,
+        id: this.employeeId
+      }));    
+      navigateTo('/');
+    }
   };
 
   private handleEmployeeCancel = () => {
