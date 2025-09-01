@@ -46,7 +46,7 @@ export class HomePage extends LitReduxMixin(LitElement) {
   }
 
   render() {
-    const { employees, viewMode, currentPage, pageSize, totalCount, language } = this.store.employee;
+    const { employees, viewMode, currentPage, pageSize, totalCount } = this.store.employee;
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedEmployees = employees.slice(startIndex, endIndex);
